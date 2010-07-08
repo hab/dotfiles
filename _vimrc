@@ -22,6 +22,8 @@ map <leader>n :NERDTree<CR>
 
 filetype plugin indent on
 
+:nnoremap <F8> :setl noai nocin nosi inde=<CR>
+
 
 " Minimal number of screen lines to keep above and below the cursor.
 set scrolloff=999 
@@ -30,11 +32,7 @@ set scrolloff=999
 set encoding=utf-8
 
 " Set color scheme that I like.
-if has("gui_running") 
-    colorscheme desert
-else 
-"    colorscheme darkblue
-endif
+colorscheme desert
 
 " Status line
 set laststatus=2 
