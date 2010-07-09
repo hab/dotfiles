@@ -10,3 +10,18 @@
 [submodule "_vim/bundle/vim-fugitive"]
 	path = _vim/bundle/vim-fugitive
 	url = http://github.com/tpope/vim-fugitive.git
+[submodule "_vim/bundle/vim-surround"]
+	path = _vim/bundle/vim-surround
+	url = http://github.com/tpope/vim-surround.git
+[submodule "_vim/bundle/vim-ragtag"]
+	path = _vim/bundle/vim-ragtag
+	url = http://github.com/tpope/vim-ragtag.git
+[submodule "_vim/bundle/vim-vividchalk"]
+	path = _vim/bundle/vim-vividchalk
+	url = http://github.com/tpope/vim-vividchalk.git
+[submodule "_vim/bundle/vim-endwise"]
+	path = _vim/bundle/vim-endwise
+	url = http://github.com/tpope/vim-endwise.git
+[submodule "_vim/bundle/nerdcommenter"]
+	path = _vim/bundle/nerdcommenter
+	url = http://github.com/scrooloose/nerdcommenter.git
