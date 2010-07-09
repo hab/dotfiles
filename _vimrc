@@ -1,6 +1,8 @@
 set nocompatible
 syntax on
 
+call pathogen#runtime_append_all_bundles()
+
 set tabstop=2
 set smarttab
 set shiftwidth=2
