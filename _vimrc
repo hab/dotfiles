@@ -34,7 +34,7 @@ set scrolloff=999
 set encoding=utf-8
 
 " Set color scheme that I like.
-colorscheme desert
+colorscheme vividchalk
 
 " Status line
 set laststatus=2 
@@ -88,3 +88,9 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 " May require ruby compiled in
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
 
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+nmap <leader>v :tabedit $MYVIMRC
