@@ -2,6 +2,7 @@ set nocompatible
 syntax on
 
 call pathogen#runtime_append_all_bundles()
+runtime! macros/matchit.vim
 
 set tabstop=2
 set smarttab
@@ -34,9 +35,6 @@ set scrolloff=999
 
 " Use UTF-8.
 set encoding=utf-8
-
-" Set color scheme that I like.
-colorscheme vividchalk
 
 " Status line
 set laststatus=2 
@@ -87,6 +85,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+
 " May require ruby compiled in
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
 

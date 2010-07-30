@@ -8,3 +8,7 @@ set guioptions-=T
 let &guifont="Monospace 10"
 
 set showtabline=2
+
+" Set color scheme that I like.
+colorscheme vividchalk
+
