@@ -12,6 +12,8 @@ set backspace=start,indent
 
 :let mapleader = ","
 
+" runtime! macros/matchit.vim
+
 " Set up commands for FuzzyFinder and FuzzyFinderTextMate
 map <leader>g :FuzzyFinderTextMate<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
