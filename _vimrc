@@ -2,6 +2,7 @@ set nocompatible
 syntax on
 
 call pathogen#runtime_append_all_bundles()
+runtime! macros/matchit.vim
 
 set tabstop=2
 set smarttab
