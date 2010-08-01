@@ -11,7 +11,7 @@ set autoindent
 set expandtab
 set backspace=start,indent
 
-:let mapleader = ","
+let mapleader = ","
 
 " runtime! macros/matchit.vim
 
@@ -27,11 +27,11 @@ map <leader>n :NERDTree<CR>
 
 filetype plugin indent on
 
-:nnoremap <F8> :setl noai nocin nosi inde=<CR>
+nnoremap <F8> :setl noai nocin nosi inde=<CR>
 
 
 " Minimal number of screen lines to keep above and below the cursor.
-set scrolloff=999 
+set scrolloff=2 
 
 " Use UTF-8.
 set encoding=utf-8
