@@ -38,6 +38,8 @@ set scrolloff=2
 " Use UTF-8.
 set encoding=utf-8
 
+colorscheme elflord
+
 " Status line
 set laststatus=2 
 set statusline= 
