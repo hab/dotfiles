@@ -13,8 +13,6 @@ set backspace=start,indent
 
 let mapleader = ","
 
-" runtime! macros/matchit.vim
-
 " Set up commands for FuzzyFinder and FuzzyFinderTextMate
 map <leader>g :FuzzyFinderTextMate<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
@@ -36,7 +34,7 @@ set scrolloff=2
 " Use UTF-8.
 set encoding=utf-8
 
-colorscheme elflord
+colorscheme vividchalk
 
 " Status line
 set laststatus=2 
