@@ -15,10 +15,12 @@ let mapleader = ","
 
 " Set up commands for FuzzyFinder and FuzzyFinderTextMate
 map <leader>g :FuzzyFinderTextMate<CR>
-map <leader>b :FuzzyFinderBuffer<CR>
+map <leader>d :FuzzyFinderBuffer<CR>
 map <leader>f :FuzzyFinderFile<CR>
 map <leader>r :FuzzyFinderMruFile<CR>
 map <leader>R :ruby finder.rescan!<CR>:FuzzyFinderRemoveCache<CR>:exe ":echo 'rescan complete'"<CR>
+
+map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Set up command for NERDTree
 map <leader>n :NERDTree<CR>
