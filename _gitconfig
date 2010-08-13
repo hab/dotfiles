@@ -4,7 +4,7 @@
 [diff]
   renames = copy
 [core]
-  editor = mvim -f
+  editor = vim -f
 [alias]
   st = status
   ci = commit
@@ -13,3 +13,4 @@
   df = diff
   lg = log -p
   who = shortlog -s -- 
+  ll = log --format='%ar %Cblue%an %Cgreen%s' --
