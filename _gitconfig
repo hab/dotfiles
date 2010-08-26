@@ -1,0 +1,16 @@
+[user]
+  name = Hakon Baunsgaard
+  email = hakonb@gmail.com
+[diff]
+  renames = copy
+[core]
+  editor = vim -f
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  who = shortlog -s -- 
+  ll = log --format='%ar %Cblue%an %Cgreen%s' --
