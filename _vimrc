@@ -18,7 +18,7 @@ map <leader>g :FuzzyFinderTextMate<CR>
 map <leader>d :FuzzyFinderBuffer<CR>
 map <leader>f :FuzzyFinderFile<CR>
 map <leader>r :FuzzyFinderMruFile<CR>
-map <leader>R :ruby finder.rescan!<CR>:FuzzyFinderRemoveCache<CR>:exe ":echo 'rescan complete'"<CR>
+map <leader>R :ruby finder.rescan!<CR>:FuzzyFinderRenewCache<CR>:exe ":echo 'rescan complete'"<CR>
 
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 
