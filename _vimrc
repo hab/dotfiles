@@ -48,7 +48,7 @@ set scrolloff=2
 " Use UTF-8.
 set encoding=utf-8
 
-colorscheme desert
+colorscheme desert256
 "colorscheme vividchalk
 
 " Status line
