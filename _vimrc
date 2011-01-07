@@ -4,12 +4,19 @@ syntax on
 call pathogen#runtime_append_all_bundles()
 runtime! macros/matchit.vim
 
+set nowrap
 set tabstop=2
 set smarttab
 set shiftwidth=2
+set softtabstop=2
 set autoindent
 set expandtab
 set backspace=start,indent
+set number
+set ruler
+set list listchars=tab:\ \ ,trail:.
+
+set backspace=indent,eol,start
 
 let mapleader = ","
 
@@ -22,13 +29,18 @@ map <leader>R :ruby finder.rescan!<CR>:FuzzyFinderRenewCache<CR>:exe ":echo 'res
 
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+
 " Set up command for NERDTree
-map <leader>n :NERDTree<CR>
+map <leader>n :NERDTreeToggle<CR>
 
 filetype plugin indent on
 
 nnoremap <F8> :setl noai nocin nosi inde=<CR>
 
+map <Leader><Leader> :ZoomWin<CR>
 
 " Minimal number of screen lines to keep above and below the cursor.
 set scrolloff=2 
@@ -36,7 +48,8 @@ set scrolloff=2
 " Use UTF-8.
 set encoding=utf-8
 
-colorscheme vividchalk
+colorscheme desert
+"colorscheme vividchalk
 
 " Status line
 set laststatus=2 
@@ -50,9 +63,6 @@ set statusline+=0x%-8B
 set statusline+=%-14(%l,%c%V%) 
 set statusline+=%<%P
 
-" Show line number, cursor position.
-set ruler 
-
 " Display incomplete commands.
 set showcmd
 
@@ -64,13 +74,14 @@ imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
 nmap <c-s> :w<CR> 
 imap <c-s> <Esc>:w<CR>a
 
-" Search as you type.
-set incsearch 
-
-" Ignore case when searching.
+set hlsearch
+set incsearch
 set ignorecase
+set smartcase
 
-set wildmenu 
+set wildmenu
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc
 
 " Show editing mode
 set showmode
