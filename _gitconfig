@@ -16,3 +16,7 @@
   ll = log --format='%ar %Cblue%an %Cgreen%s' --
 [push]
 	default = matching
+[color]
+	diff = auto
+	status = auto
+	branch = auto
