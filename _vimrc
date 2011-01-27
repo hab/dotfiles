@@ -4,7 +4,7 @@ syntax on
 call pathogen#runtime_append_all_bundles()
 runtime! macros/matchit.vim
 
-set nowrap
+" set nowrap
 set tabstop=2
 set smarttab
 set shiftwidth=2
@@ -48,8 +48,8 @@ set scrolloff=2
 " Use UTF-8.
 set encoding=utf-8
 
-colorscheme desert256
-"colorscheme vividchalk
+"colorscheme desert256
+colorscheme vividchalk
 
 " Status line
 set laststatus=2 
