@@ -38,6 +38,9 @@ map <leader>n :NERDTreeToggle<CR>
 
 filetype plugin indent on
 
+filetype off
+filetype on
+
 nnoremap <F8> :setl noai nocin nosi inde=<CR>
 
 map <Leader><Leader> :ZoomWin<CR>
