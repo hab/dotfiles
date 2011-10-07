@@ -1,10 +1,13 @@
 [user]
-  name = Hakon Baunsgaard
-  email = hakonb@gmail.com
+	name = Hakon Baunsgaard
+	email = hakonb@gmail.com
 [diff]
   renames = copy
+	tool = Kaleidoscope
 [core]
   editor = vim -f
+	excludesfile = /Users/hakon/.gitignore_global
+	quotepath = false
 [alias]
   st = status
   ci = commit
@@ -20,3 +23,30 @@
 	diff = auto
 	status = auto
 	branch = auto
+#[difftool "sourcetree"]
+#	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+#	path = 
+#[mergetool "sourcetree"]
+#	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+#	trustExitCode = true
+#[difftool "Kaleidoscope"]
+#[difftool "Kaleidoscope"]
+#	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+
+[merge]
+  keepBackup = false
+  tool = custom
+
+[mergetool "custom"]
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$REMOTE" "$PWD/$LOCAL" "$PWD/$MERGED"
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
