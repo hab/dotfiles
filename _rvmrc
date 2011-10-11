@@ -1,2 +1,4 @@
 export rvm_pretty_print_flag=1
 export rvm_path="/home/hakon/.rvm"
+export rvm_project_rvmrc_default=1
+export rvm_project_rvmrc=1
