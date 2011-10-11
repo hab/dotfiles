@@ -36,6 +36,8 @@ cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 " Set up command for NERDTree
 map <leader>n :NERDTreeToggle<CR>
 
+command! W :w
+
 filetype plugin indent on
 
 filetype off
