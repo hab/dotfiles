@@ -21,11 +21,50 @@ set backspace=indent,eol,start
 let mapleader = ","
 
 " Set up commands for FuzzyFinder and FuzzyFinderTextMate
-map <leader>g :FuzzyFinderTextMate<CR>
-map <leader>d :FuzzyFinderBuffer<CR>
-map <leader>f :FuzzyFinderFile<CR>
-map <leader>r :FuzzyFinderMruFile<CR>
-map <leader>R :ruby finder.rescan!<CR>:FuzzyFinderRenewCache<CR>:exe ":echo 'rescan complete'"<CR>
+"map <leader>g :FuzzyFinderTextMate<CR>
+"map <leader>d :FuzzyFinderBuffer<CR>
+"map <leader>f :FuzzyFinderFile<CR>
+"map <leader>r :FuzzyFinderMruFile<CR>
+"map <leader>R :ruby finder.rescan!<CR>:FuzzyFinderRenewCache<CR>:exe ":echo 'rescan complete'"<CR>
+
+map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+" Open files, limited to the directory of the current file, with <leader>gf
+" This requires the %% mapping found below.
+map <leader>gf :CommandTFlush<cr>\|:CommandT %%<cr>
+
+map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
+
+map <leader>gr :topleft :split config/routes.rb<cr>
+map <leader>gg :topleft 100 :split Gemfile<cr>
+
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+
+function! ShowRoutes()
+  " Requires 'scratch' plugin
+  :topleft 100 :split __Routes__
+  " Make sure Vim doesn't write __Routes__ as a file
+  :set buftype=nofile
+  " Delete everything
+  :normal 1GdG
+  " Put routes output in buffer
+  :0r! rake -s routes
+  " Size window to number of lines (1 plus rake output length)
+  :exec ":normal " . line("$") . "_ "
+  " Move cursor to bottom
+  :normal 1GG
+  " Delete empty trailing line
+  :normal dd
+endfunction
+map <leader>gR :call ShowRoutes()<cr>
+
 
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 
