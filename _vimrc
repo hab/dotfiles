@@ -20,7 +20,6 @@ set backspace=indent,eol,start
 
 let mapleader = ","
 
-
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 " Open files, limited to the directory of the current file, with <leader>gf
 " This requires the %% mapping found below.
@@ -59,15 +58,10 @@ function! ShowRoutes()
 endfunction
 map <leader>gR :call ShowRoutes()<cr>
 
-
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
-
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-" Set up command for NERDTree
-map <leader>n :NERDTreeToggle<CR>
 
 command! W :w
 
