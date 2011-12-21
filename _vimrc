@@ -20,12 +20,6 @@ set backspace=indent,eol,start
 
 let mapleader = ","
 
-" Set up commands for FuzzyFinder and FuzzyFinderTextMate
-"map <leader>g :FuzzyFinderTextMate<CR>
-"map <leader>d :FuzzyFinderBuffer<CR>
-"map <leader>f :FuzzyFinderFile<CR>
-"map <leader>r :FuzzyFinderMruFile<CR>
-"map <leader>R :ruby finder.rescan!<CR>:FuzzyFinderRenewCache<CR>:exe ":echo 'rescan complete'"<CR>
 
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 " Open files, limited to the directory of the current file, with <leader>gf
@@ -135,7 +129,7 @@ set visualbell
 
 " Omni Completion
 " *************************************************************
-autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -143,12 +137,14 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
-" May require ruby compiled in
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
-
 " Source the vimrc file after saving it
 if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
+
+  autocmd FileType ruby set omnifunc=rubycomplete#Complete
+  autocmd FileType eruby set omnifunc=rubycomplete#Complete 
+  autocmd FileType ruby let g:rubycomplete_buffer_loading=1
+  autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 endif
 
 nmap <leader>v :tabedit $MYVIMRC
