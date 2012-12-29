@@ -106,7 +106,7 @@ set smartcase
 
 set wildmenu
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc
+set wildignore+=*.o,*.obj,.git,*.rbc,*/.idea/*,*/.bundle/*,*/log/*
 
 " Show editing mode
 set showmode
