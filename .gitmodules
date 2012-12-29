@@ -13,6 +13,7 @@
 [submodule "_vim/bundle/vim-ragtag"]
 	path = _vim/bundle/vim-ragtag
 	url = http://github.com/tpope/vim-ragtag.git
+  ignore = untracked 
 [submodule "_vim/bundle/vim-vividchalk"]
 	path = _vim/bundle/vim-vividchalk
 	url = http://github.com/tpope/vim-vividchalk.git
@@ -28,6 +29,7 @@
 [submodule "_vim/bundle/vim-bufexplorer"]
 	path = _vim/bundle/vim-bufexplorer
 	url = git://github.com/slack/vim-bufexplorer.git
+  ignore = untracked 
 [submodule "_vim/bundle/vim-rake"]
 	path = _vim/bundle/vim-rake
 	url = git://github.com/tpope/vim-rake.git
@@ -46,3 +48,6 @@
 [submodule "_vim/bundle/jellybeans.vim"]
 	path = _vim/bundle/jellybeans.vim
 	url = git://github.com/nanotech/jellybeans.vim.git
+[submodule "_vim/bundle/nerdtree"]
+	path = _vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git

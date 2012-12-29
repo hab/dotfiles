@@ -65,7 +65,7 @@ nnoremap <F8> :setl noai nocin nosi inde=<CR>
 map <Leader><Leader> :ZoomWin<CR>
 
 " Minimal number of screen lines to keep above and below the cursor.
-set scrolloff=3 
+set scrolloff=3
 
 " Use UTF-8.
 set encoding=utf-8
@@ -74,15 +74,15 @@ set encoding=utf-8
 colorscheme vividchalk
 
 " Status line
-set laststatus=2 
-set statusline= 
-set statusline+=%-3.3n\ 
-set statusline+=%f\ 
-set statusline+=%h%m%r%w 
-set statusline+=\[%{strlen(&ft)?&ft:'none'}] 
-set statusline+=%= 
-set statusline+=0x%-8B 
-set statusline+=%-14(%l,%c%V%) 
+set laststatus=2
+set statusline=
+set statusline+=%-3.3n\
+set statusline+=%f\
+set statusline+=%h%m%r%w
+set statusline+=\[%{strlen(&ft)?&ft:'none'}]
+set statusline+=%=
+set statusline+=0x%-8B
+set statusline+=%-14(%l,%c%V%)
 set statusline+=%<%P
 
 set title
@@ -92,11 +92,11 @@ set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
 set showcmd
 
 " To insert timestamp, press F3.
-nmap <F3> a<C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR><Esc> 
+nmap <F3> a<C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR><Esc>
 imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
 
 " To save, press ctrl-s.
-nmap <c-s> :w<CR> 
+nmap <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>a
 
 set hlsearch
@@ -130,17 +130,17 @@ augroup myfiletypes
   autocmd FileType cucumber set autoindent tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType puppet set autoindent tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
-  au BufRead,BufNewFile *etc/nginx/* set ft=nginx 
+  au BufRead,BufNewFile *etc/nginx/* set ft=nginx
 
   " treat rackup files like ruby
   au BufRead,BufNewFile *.ru set ft=ruby
   au BufRead,BufNewFile Gemfile set ft=ruby
   autocmd BufEnter *.haml setlocal cursorcolumn
-  au BufRead,BufNewFile Gemfile set ft=ruby                                   
-  au BufRead,BufNewFile Capfile set ft=ruby                                   
-  au BufRead,BufNewFile Thorfile set ft=ruby                                   
-  au BufRead,BufNewFile *.god set ft=ruby  
-  au BufRead,BufNewFile .caprc set ft=ruby  
+  au BufRead,BufNewFile Gemfile set ft=ruby
+  au BufRead,BufNewFile Capfile set ft=ruby
+  au BufRead,BufNewFile Thorfile set ft=ruby
+  au BufRead,BufNewFile *.god set ft=ruby
+  au BufRead,BufNewFile .caprc set ft=ruby
 augroup END
 
 " Turn on language specific omnifuncs
@@ -182,3 +182,16 @@ map <leader>F :Ack<space>
 
 " Hide search highlighting
 map <silent> <leader>nh :nohls <CR>
+
+map <leader>n :NERDTreeToggle<CR>
+" quit NERDTree after openning a file
+let NERDTreeQuitOnOpen=1
+" colored NERD Tree
+let NERDChristmasTree = 1
+let NERDTreeHighlightCursorline = 1
+let NERDTreeShowHidden = 1
+
+" map enter to activating a node
+let NERDTreeMapActivateNode='<CR>'
+let NERDTreeIgnore=['\.git','\.DS_Store','\.pdf', '.beam', '\.bundle']
+
