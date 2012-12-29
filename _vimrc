@@ -1,8 +1,10 @@
 set nocompatible
 syntax on
 
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 runtime! macros/matchit.vim
+
+scriptencoding utf-8
 
 " set nowrap
 set tabstop=2
@@ -20,18 +22,6 @@ set backspace=indent,eol,start
 
 let mapleader = ","
 
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-" Open files, limited to the directory of the current file, with <leader>gf
-" This requires the %% mapping found below.
-map <leader>gf :CommandTFlush<cr>\|:CommandT %%<cr>
-
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
 
 map <leader>gr :topleft :split config/routes.rb<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
@@ -75,7 +65,7 @@ nnoremap <F8> :setl noai nocin nosi inde=<CR>
 map <Leader><Leader> :ZoomWin<CR>
 
 " Minimal number of screen lines to keep above and below the cursor.
-set scrolloff=2 
+set scrolloff=3 
 
 " Use UTF-8.
 set encoding=utf-8
@@ -94,6 +84,9 @@ set statusline+=%=
 set statusline+=0x%-8B 
 set statusline+=%-14(%l,%c%V%) 
 set statusline+=%<%P
+
+set title
+set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
 
 " Display incomplete commands.
 set showcmd
@@ -117,28 +110,75 @@ set wildignore+=*.o,*.obj,.git,*.rbc
 
 " Show editing mode
 set showmode
+" sm:    flashes matching brackets or parentheses
+set showmatch
 
 " Error bells are displayed visually.
 set visualbell
 
-" Omni Completion
-" *************************************************************
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+augroup myfiletypes
+  " Clear old autocmds in group
+  autocmd!
+
+  autocmd bufwritepost .vimrc source $MYVIMRC
+
+  " autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,eruby,yaml set autoindent shiftwidth=2 softtabstop=2 tabstop=2 expandtab
+  autocmd FileType python set autoindent shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType javascript,html,htmldjango,css set autoindent shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType vim set autoindent tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType cucumber set autoindent tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType puppet set autoindent tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+  au BufRead,BufNewFile *etc/nginx/* set ft=nginx 
+
+  " treat rackup files like ruby
+  au BufRead,BufNewFile *.ru set ft=ruby
+  au BufRead,BufNewFile Gemfile set ft=ruby
+  autocmd BufEnter *.haml setlocal cursorcolumn
+  au BufRead,BufNewFile Gemfile set ft=ruby                                   
+  au BufRead,BufNewFile Capfile set ft=ruby                                   
+  au BufRead,BufNewFile Thorfile set ft=ruby                                   
+  au BufRead,BufNewFile *.god set ft=ruby  
+  au BufRead,BufNewFile .caprc set ft=ruby  
+augroup END
+
+" Turn on language specific omnifuncs
+autocmd FileType ruby set omnifunc=rubycomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
-" Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-
-  autocmd FileType ruby set omnifunc=rubycomplete#Complete
-  autocmd FileType eruby set omnifunc=rubycomplete#Complete 
-  autocmd FileType ruby let g:rubycomplete_buffer_loading=1
-  autocmd FileType ruby let g:rubycomplete_classes_in_global=1
-endif
+" have some fun with bufexplorer
+let g:bufExplorerDefaultHelp=0       " Do not show default help.
+let g:bufExplorerShowRelativePath=1  " Show relative paths.
 
 nmap <leader>v :tabedit $MYVIMRC
+
+" limit number of results shown for performance
+let g:fuzzy_matching_limit=60
+" ignore stuff that can't be openned, and generated files
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;*.beam;vendor/**;coverage/**;tmp/**;rdoc/**"
+" increate the number of files scanned for very large projects
+let g:fuzzy_ceiling=20000
+" display relative path, instead of abbrevated path (lib/jeweler.rb vs l/jeweler.rb)
+let g:fuzzy_path_display = 'relative_path'
+
+let g:browser = 'open '
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endi
+
+map <leader>F :Ack<space>
+
+" Hide search highlighting
+map <silent> <leader>nh :nohls <CR>
