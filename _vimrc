@@ -40,28 +40,15 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
 
-function! ShowRoutes()
-  " Requires 'scratch' plugin
-  :topleft 100 :split __Routes__
-  " Make sure Vim doesn't write __Routes__ as a file
-  :set buftype=nofile
-  " Delete everything
-  :normal 1GdG
-  " Put routes output in buffer
-  :0r! rake -s routes
-  " Size window to number of lines (1 plus rake output length)
-  :exec ":normal " . line("$") . "_ "
-  " Move cursor to bottom
-  :normal 1GG
-  " Delete empty trailing line
-  :normal dd
-endfunction
-map <leader>gR :call ShowRoutes()<cr>
-
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+
+" Use CTRL-S for saving, also in Insert mode
+noremap <C-S>   :update<CR>
+vnoremap <C-S>    <C-C>:update<CR>
+inoremap <C-S>    <C-O>:update<CR>
 
 command! W :w
 
@@ -98,10 +85,6 @@ set statusline+=%<%P
 " Display incomplete commands.
 set showcmd
 
-" To insert timestamp, press F3.
-nmap <F3> a<C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR><Esc> 
-imap <F3> <C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR>
-
 " To save, press ctrl-s.
 nmap <c-s> :w<CR> 
 imap <c-s> <Esc>:w<CR>a
@@ -113,7 +96,7 @@ set smartcase
 
 set wildmenu
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc
+set wildignore+=*.o,*.obj,.git,*.rbc,tmp/cache/**
 
 " Show editing mode
 set showmode
@@ -121,24 +104,11 @@ set showmode
 " Error bells are displayed visually.
 set visualbell
 
-" Omni Completion
-" *************************************************************
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-
 " Source the vimrc file after saving it
 if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
-
-  autocmd FileType ruby set omnifunc=rubycomplete#Complete
-  autocmd FileType eruby set omnifunc=rubycomplete#Complete 
-  autocmd FileType ruby let g:rubycomplete_buffer_loading=1
-  autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 endif
 
 nmap <leader>v :tabedit $MYVIMRC
+
+":set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
