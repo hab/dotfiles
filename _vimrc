@@ -57,8 +57,8 @@ set scrolloff=3
 " Use UTF-8.
 set encoding=utf-8
 
-"colorscheme desert256
-colorscheme vividchalk
+colorscheme desert256
+"colorscheme vividchalk
 
 " Status line
 set laststatus=2
@@ -177,4 +177,5 @@ let NERDTreeShowHidden = 1
 " map enter to activating a node
 let NERDTreeMapActivateNode='<CR>'
 let NERDTreeIgnore=['\.git','\.DS_Store','\.pdf', '.beam', '\.bundle']
+
 
