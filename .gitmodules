@@ -57,3 +57,6 @@
 [submodule "_vim/bundle/simpledb"]
 	path = _vim/bundle/simpledb
 	url = https://github.com/ivalkeen/vim-simpledb
+[submodule "_vim/bundle/vim-airline"]
+	path = _vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline

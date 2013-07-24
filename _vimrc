@@ -57,8 +57,9 @@ set scrolloff=3
 " Use UTF-8.
 set encoding=utf-8
 
+set t_Co=256
 colorscheme desert256
-colorscheme desert
+"colorscheme desert
 "colorscheme vividchalk
 
 " Status line
@@ -180,3 +181,4 @@ let NERDTreeShowHidden = 1
 let NERDTreeIgnore=['\.git','\.DS_Store','\.pdf', '.beam', '\.bundle']
 
 
+let g:airline_theme='dark'
