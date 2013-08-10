@@ -1,7 +1,34 @@
 set nocompatible
-syntax on
 
-call pathogen#infect()
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-rails.git'
+Bundle 'mileszs/ack.vim.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'nanotech/jellybeans.vim.git'
+Bundle 'scrooloose/nerdtree.git'
+Bundle 'ivalkeen/vim-simpledb.git'
+Bundle 'bling/vim-airline.git'
+Bundle 'slack/vim-bufexplorer.git'
+Bundle 'kchmck/vim-coffee-script.git'
+Bundle 'hail2u/vim-css3-syntax.git'
+Bundle 'tpope/vim-endwise.git'
+Bundle 'tpope/vim-haml.git'
+Bundle 'groenewege/vim-less.git'
+Bundle 'tpope/vim-ragtag.git'
+Bundle 'tpope/vim-rake.git'
+Bundle 'slim-template/vim-slim.git'
+Bundle 'tpope/vim-surround.git'
+Bundle 'tpope/vim-unimpaired.git'
+
+filetype plugin indent on     " required!
+
 runtime! macros/matchit.vim
 
 scriptencoding utf-8
@@ -22,9 +49,7 @@ set backspace=indent,eol,start
 
 let mapleader = ","
 
-
-map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
+syntax on
 
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
@@ -41,8 +66,6 @@ vnoremap <C-S>    <C-C>:update<CR>
 inoremap <C-S>    <C-O>:update<CR>
 
 command! W :w
-
-filetype plugin indent on
 
 filetype off
 filetype on
@@ -180,5 +203,9 @@ let NERDTreeShowHidden = 1
 " let NERDTreeMapActivateNode='<CR>'
 let NERDTreeIgnore=['\.git','\.DS_Store','\.pdf', '.beam', '\.bundle']
 
+nnoremap <cr> :nohlsearch<cr>
 
 let g:airline_theme='dark'
+
+" Save file using sudo
+cmap w!! %!sudo tee > /dev/null % 
